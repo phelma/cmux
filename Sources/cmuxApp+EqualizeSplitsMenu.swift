@@ -2,7 +2,7 @@ import SwiftUI
 
 extension cmuxApp {
     func makeSplitWiderCommandButton() -> some View {
-        splitCommandButton(title: String(localized: "command.makeSplitWider.title", defaultValue: "Make Split Wider"), shortcut: menuShortcut(for: .makeSplitWider)) {
+        splitCommandButton(title: String(localized: "command.makeSplitWider.title", defaultValue: "Make Active Split Wider"), shortcut: menuShortcut(for: .makeSplitWider)) {
             let manager = activeTabManager
             if !manager.makeFocusedSplitWider() {
                 NSSound.beep()

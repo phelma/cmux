@@ -29430,6 +29430,54 @@
         }
       }
     },
+    "command.makeSplitWider.subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "ターミナルレイアウト" } },
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "zh-Hant": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "da": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "pl": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "ru": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "bs": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "ar": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "nb": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "th": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } },
+        "uk": { "stringUnit": { "state": "translated", "value": "Terminal Layout" } }
+      }
+    },
+    "command.makeSplitWider.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アクティブな分割を広くする" } },
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "zh-Hant": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "da": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "pl": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "ru": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "bs": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "ar": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "nb": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "th": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "uk": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } }
+      }
+    },
     "command.toggleSplitZoom.subtitle": {
       "extractionState": "manual",
       "localizations": {
@@ -88256,6 +88304,30 @@
             "value": "Вирівняти розділення"
           }
         }
+      }
+    },
+    "shortcut.makeSplitWider.label": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アクティブな分割を広くする" } },
+        "zh-Hans": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "zh-Hant": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "da": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "pl": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "ru": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "bs": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "ar": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "nb": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "th": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
+        "uk": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } }
       }
     },
     "shortcut.splitRight.label": {
