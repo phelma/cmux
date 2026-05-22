@@ -7261,6 +7261,18 @@ struct ContentView: View {
                 }
             )
         )
+        contributions.append(
+            CommandPaletteCommandContribution(
+                commandId: "palette.makeSplitNarrower",
+                title: constant(String(localized: "command.makeSplitNarrower.title", defaultValue: "Make Active Split Narrower")),
+                subtitle: constant(String(localized: "command.makeSplitNarrower.subtitle", defaultValue: "Terminal Layout")),
+                keywords: ["terminal", "pane", "split", "narrower", "resize", "shrink"],
+                when: { context in
+                    context.bool(CommandPaletteContextKeys.panelIsTerminal) &&
+                    context.bool(CommandPaletteContextKeys.workspaceHasSplits)
+                }
+            )
+        )
 
         let cmuxConfigDefaultSubtitle = String(localized: "command.cmuxConfig.subtitle", defaultValue: "cmux.json")
         for issue in cmuxConfigStore.configurationIssues {
@@ -7832,6 +7844,18 @@ struct ContentView: View {
                     cmuxDebugLog("palette.makeSplitWider result=resizeFailed workspaceId=\(workspace.id)")
                 } else {
                     cmuxDebugLog("palette.makeSplitWider result=noWorkspace")
+                }
+#endif
+                NSSound.beep()
+            }
+        }
+        registry.register(commandId: "palette.makeSplitNarrower") {
+            if !tabManager.makeFocusedSplitNarrower() {
+#if DEBUG
+                if let workspace = tabManager.selectedWorkspace {
+                    cmuxDebugLog("palette.makeSplitNarrower result=resizeFailed workspaceId=\(workspace.id)")
+                } else {
+                    cmuxDebugLog("palette.makeSplitNarrower result=noWorkspace")
                 }
 #endif
                 NSSound.beep()

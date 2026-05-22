@@ -17,6 +17,22 @@ extension cmuxApp {
         }
     }
 
+    func makeSplitNarrowerCommandButton() -> some View {
+        splitCommandButton(title: String(localized: "command.makeSplitNarrower.title", defaultValue: "Make Active Split Narrower"), shortcut: menuShortcut(for: .makeSplitNarrower)) {
+            let manager = activeTabManager
+            if !manager.makeFocusedSplitNarrower() {
+                NSSound.beep()
+#if DEBUG
+                if let workspace = manager.selectedWorkspace {
+                    cmuxDebugLog("menu.makeSplitNarrower result=resizeFailed workspaceId=\(workspace.id)")
+                } else {
+                    cmuxDebugLog("menu.makeSplitNarrower result=noWorkspace")
+                }
+#endif
+            }
+        }
+    }
+
     func equalizeSplitsCommandButton() -> some View {
         splitCommandButton(title: String(localized: "command.equalizeSplits.title", defaultValue: "Equalize Splits"), shortcut: menuShortcut(for: .equalizeSplits)) {
             let manager = activeTabManager

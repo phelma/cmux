@@ -787,6 +787,7 @@ struct cmuxApp: App {
             }
 
             makeSplitWiderCommandButton()
+            makeSplitNarrowerCommandButton()
             equalizeSplitsCommandButton()
             Divider()
 

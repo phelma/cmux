@@ -44,4 +44,29 @@ extension AppDelegate {
         }
 #endif
     }
+
+    func performMakeSplitNarrowerShortcut(tabManager overrideTabManager: TabManager? = nil) {
+        guard let tabManager = overrideTabManager ?? tabManager,
+              let workspace = tabManager.selectedWorkspace else {
+#if DEBUG
+            cmuxDebugLog("shortcut.action name=makeSplitNarrower result=noWorkspace")
+#endif
+            return
+        }
+#if DEBUG
+        cmuxDebugLog("shortcut.action name=makeSplitNarrower workspaceId=\(workspace.id)")
+#endif
+        if shouldSuppressSplitShortcutForTransientTerminalFocusState(tabManager: tabManager) {
+            return
+        }
+        let didResize = tabManager.makeFocusedSplitNarrower()
+        if !didResize {
+            NSSound.beep()
+        }
+#if DEBUG
+        if !didResize {
+            cmuxDebugLog("shortcut.action name=makeSplitNarrower result=resizeFailed workspaceId=\(workspace.id)")
+        }
+#endif
+    }
 }

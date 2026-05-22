@@ -2138,6 +2138,43 @@ final class TabManagerResizeSplitsTests: XCTestCase {
         )
     }
 
+    func testMakeFocusedSplitNarrowerMovesDividerTowardFocusedPane() {
+        let manager = TabManager()
+        guard let workspace = manager.selectedWorkspace,
+              let leftPanelId = workspace.focusedPanelId,
+              workspace.newTerminalSplit(from: leftPanelId, orientation: .horizontal) != nil else {
+            XCTFail("Expected split setup to succeed")
+            return
+        }
+
+        guard let split = splitNodes(in: workspace.bonsplitController.treeSnapshot()).first,
+              let splitId = UUID(uuidString: split.id) else {
+            XCTFail("Expected a split node in tree snapshot")
+            return
+        }
+
+        XCTAssertTrue(
+            workspace.bonsplitController.setDividerPosition(0.5, forSplit: splitId),
+            "Expected to seed divider position"
+        )
+
+        XCTAssertTrue(
+            manager.makeFocusedSplitNarrower(amount: 120),
+            "Expected makeFocusedSplitNarrower to succeed for the focused left pane"
+        )
+
+        guard let updatedSplit = splitNodes(in: workspace.bonsplitController.treeSnapshot()).first else {
+            XCTFail("Expected updated split node in tree snapshot")
+            return
+        }
+
+        XCTAssertLessThan(
+            updatedSplit.dividerPosition,
+            0.5,
+            "Expected narrowing the left pane to move the divider toward the first child"
+        )
+    }
+
     func testResizeSplitMovesVerticalDividerDownForFirstChildPane() {
         let manager = TabManager()
         guard let workspace = manager.selectedWorkspace,

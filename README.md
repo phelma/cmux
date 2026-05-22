@@ -179,6 +179,7 @@ For more info on how to configure cmux, [head over to our docs](https://cmux.com
 |----------|--------|
 | ⌘ D | Split right |
 | ⌘ ⇧ D | Split down |
+| ⌃ ⌘ ← / ⌃ ⌘ → | Make active split narrower / wider |
 | ⌥ ⌘ ← → ↑ ↓ | Focus pane directionally |
 | ⌘ ⇧ H | Flash focused panel |
 

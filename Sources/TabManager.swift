@@ -7398,10 +7398,61 @@ class TabManager: ObservableObject {
     /// pixel-based resize unit as `resizeSplit(tabId:surfaceId:direction:amount:)`.
     @discardableResult
     func makeFocusedSplitWider(amount: UInt16 = 48) -> Bool {
+        resizeFocusedSplitWidth(amount: amount, firstChildDividerDeltaSign: 1, secondChildDividerDeltaSign: -1)
+    }
+
+    /// Attempts to narrow the focused pane in the selected workspace.
+    ///
+    /// The resize first tries moving a focused first-child pane's divider
+    /// leftward. If that is not possible for the current layout, it falls back
+    /// to moving a focused second-child pane's divider rightward instead.
+    /// Both operations decrease the focused pane's width. `amount` uses the same
+    /// pixel-based resize unit as `resizeSplit(tabId:surfaceId:direction:amount:)`.
+    @discardableResult
+    func makeFocusedSplitNarrower(amount: UInt16 = 48) -> Bool {
+        resizeFocusedSplitWidth(amount: amount, firstChildDividerDeltaSign: -1, secondChildDividerDeltaSign: 1)
+    }
+
+    private func resizeFocusedSplitWidth(
+        amount: UInt16,
+        firstChildDividerDeltaSign: CGFloat,
+        secondChildDividerDeltaSign: CGFloat
+    ) -> Bool {
         guard let tab = selectedWorkspace,
-              let focusedPanelId = tab.focusedPanelId else { return false }
-        return resizeSplit(tabId: tab.id, surfaceId: focusedPanelId, direction: .right, amount: amount)
-            || resizeSplit(tabId: tab.id, surfaceId: focusedPanelId, direction: .left, amount: amount)
+              let focusedPanelId = tab.focusedPanelId,
+              amount > 0,
+              let paneId = tab.paneId(forPanelId: focusedPanelId) else { return false }
+
+        let paneUUID = paneId.id
+        guard tab.bonsplitController.allPaneIds.contains(where: { $0.id == paneUUID }) else {
+            return false
+        }
+
+        var candidates: [ResizeSplitCandidate] = []
+        let trace = resizeSplitCollectCandidates(
+            node: tab.bonsplitController.treeSnapshot(),
+            targetPaneId: paneUUID.uuidString,
+            candidates: &candidates
+        )
+        guard trace.containsTarget else { return false }
+
+        let orientationMatches = candidates.filter { $0.orientation == "horizontal" }
+        guard !orientationMatches.isEmpty else { return false }
+
+        for paneInFirstChild in [true, false] {
+            guard let candidate = orientationMatches.first(where: { $0.paneInFirstChild == paneInFirstChild }) else {
+                continue
+            }
+            let delta = CGFloat(amount) / candidate.axisPixels
+            let deltaSign = candidate.paneInFirstChild ? firstChildDividerDeltaSign : secondChildDividerDeltaSign
+            let requested = candidate.dividerPosition + (deltaSign * delta)
+            let clamped = min(max(requested, 0.1), 0.9)
+            if tab.bonsplitController.setDividerPosition(clamped, forSplit: candidate.splitId, fromExternal: true) {
+                return true
+            }
+        }
+
+        return false
     }
 
     private struct ResizeSplitCandidate {

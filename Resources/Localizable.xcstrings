@@ -29478,6 +29478,28 @@
         "uk": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } }
       }
     },
+    "command.makeSplitNarrower.subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminal Layout"
+          }
+        }
+      }
+    },
+    "command.makeSplitNarrower.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make Active Split Narrower"
+          }
+        }
+      }
+    },
     "command.toggleSplitZoom.subtitle": {
       "extractionState": "manual",
       "localizations": {
@@ -88328,6 +88350,17 @@
         "th": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
         "tr": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } },
         "uk": { "stringUnit": { "state": "translated", "value": "Make Active Split Wider" } }
+      }
+    },
+    "shortcut.makeSplitNarrower.label": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make Active Split Narrower"
+          }
+        }
       }
     },
     "shortcut.splitRight.label": {

@@ -12294,6 +12294,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
             performMakeSplitWiderShortcut(tabManager: routedManager)
             return true
         }
+        if matchConfiguredShortcut(event: event, action: .makeSplitNarrower) {
+            let routedManager = preferredMainWindowContextForShortcutRouting(event: event)?.tabManager ?? tabManager
+            performMakeSplitNarrowerShortcut(tabManager: routedManager)
+            return true
+        }
         // Configured split actions.
         if matchConfiguredShortcut(event: event, action: .splitRight) {
 #if DEBUG
