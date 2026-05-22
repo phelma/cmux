@@ -7249,6 +7249,18 @@ struct ContentView: View {
                 when: { $0.bool(CommandPaletteContextKeys.workspaceHasSplits) }
             )
         )
+        contributions.append(
+            CommandPaletteCommandContribution(
+                commandId: "palette.makeSplitWider",
+                title: constant(String(localized: "command.makeSplitWider.title", defaultValue: "Make Pane Wider")),
+                subtitle: constant(String(localized: "command.makeSplitWider.subtitle", defaultValue: "Terminal Layout")),
+                keywords: ["terminal", "pane", "split", "wider", "resize", "expand"],
+                when: { context in
+                    context.bool(CommandPaletteContextKeys.panelIsTerminal) &&
+                    context.bool(CommandPaletteContextKeys.workspaceHasSplits)
+                }
+            )
+        )
 
         let cmuxConfigDefaultSubtitle = String(localized: "command.cmuxConfig.subtitle", defaultValue: "cmux.json")
         for issue in cmuxConfigStore.configurationIssues {
@@ -7811,6 +7823,11 @@ struct ContentView: View {
 #if DEBUG
                 cmuxDebugLog("palette.equalizeSplits result=noSplitOrFailed workspaceId=\(workspace.id)")
 #endif
+            }
+        }
+        registry.register(commandId: "palette.makeSplitWider") {
+            if !tabManager.makeFocusedSplitWider() {
+                NSSound.beep()
             }
         }
 

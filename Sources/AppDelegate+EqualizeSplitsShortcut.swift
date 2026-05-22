@@ -19,4 +19,26 @@ extension AppDelegate {
         }
 #endif
     }
+
+    func performMakeSplitWiderShortcut(tabManager overrideTabManager: TabManager? = nil) {
+        guard let tabManager = overrideTabManager ?? tabManager,
+              let workspace = tabManager.selectedWorkspace else {
+#if DEBUG
+            cmuxDebugLog("shortcut.action name=makeSplitWider result=noWorkspace")
+#endif
+            return
+        }
+#if DEBUG
+        cmuxDebugLog("shortcut.action name=makeSplitWider workspaceId=\(workspace.id)")
+#endif
+        if shouldSuppressSplitShortcutForTransientTerminalFocusState(tabManager: tabManager) {
+            return
+        }
+        let didResize = tabManager.makeFocusedSplitWider()
+#if DEBUG
+        if !didResize {
+            cmuxDebugLog("shortcut.action name=makeSplitWider result=noHorizontalSplitOrFailed workspaceId=\(workspace.id)")
+        }
+#endif
+    }
 }

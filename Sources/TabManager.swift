@@ -7389,6 +7389,14 @@ class TabManager: ObservableObject {
         return tab.toggleSplitZoom(panelId: focusedPanelId)
     }
 
+    @discardableResult
+    func makeFocusedSplitWider(amount: UInt16 = 48) -> Bool {
+        guard let tab = selectedWorkspace,
+              let focusedPanelId = tab.focusedPanelId else { return false }
+        return resizeSplit(tabId: tab.id, surfaceId: focusedPanelId, direction: .right, amount: amount)
+            || resizeSplit(tabId: tab.id, surfaceId: focusedPanelId, direction: .left, amount: amount)
+    }
+
     private struct ResizeSplitCandidate {
         let splitId: UUID
         let orientation: String
