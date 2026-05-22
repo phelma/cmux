@@ -7395,8 +7395,7 @@ class TabManager: ObservableObject {
     /// rightward. If that is not possible for the current layout, it falls back
     /// to `.left`, which moves the focused pane's left edge leftward instead.
     /// Both operations increase the focused pane's width. `amount` uses the same
-    /// pixel-based resize unit
-    /// as `resizeSplit(tabId:surfaceId:direction:amount:)`.
+    /// pixel-based resize unit as `resizeSplit(tabId:surfaceId:direction:amount:)`.
     @discardableResult
     func makeFocusedSplitWider(amount: UInt16 = 48) -> Bool {
         guard let tab = selectedWorkspace,
