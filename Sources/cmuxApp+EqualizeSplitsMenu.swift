@@ -8,7 +8,7 @@ extension cmuxApp {
                 NSSound.beep()
 #if DEBUG
                 if let workspace = manager.selectedWorkspace {
-                    cmuxDebugLog("menu.makeSplitWider result=noHorizontalSplitOrFailed workspaceId=\(workspace.id)")
+                    cmuxDebugLog("menu.makeSplitWider result=resizeFailed workspaceId=\(workspace.id)")
                 } else {
                     cmuxDebugLog("menu.makeSplitWider result=noWorkspace")
                 }

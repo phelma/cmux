@@ -40,7 +40,7 @@ extension AppDelegate {
         }
 #if DEBUG
         if !didResize {
-            cmuxDebugLog("shortcut.action name=makeSplitWider result=noHorizontalSplitOrFailed workspaceId=\(workspace.id)")
+            cmuxDebugLog("shortcut.action name=makeSplitWider result=resizeFailed workspaceId=\(workspace.id)")
         }
 #endif
     }

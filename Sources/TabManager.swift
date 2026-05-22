@@ -7391,9 +7391,10 @@ class TabManager: ObservableObject {
 
     /// Attempts to widen the focused pane in the selected workspace.
     ///
-    /// The resize first tries to move the focused pane's right edge outward; if
+    /// The resize first tries to move the focused pane's right edge rightward; if
     /// that is not possible for the current layout, it falls back to moving the
-    /// left edge outward instead. `amount` uses the same pixel-based resize unit
+    /// left edge leftward instead. Both operations increase the focused pane's
+    /// width. `amount` uses the same pixel-based resize unit
     /// as `resizeSplit(tabId:surfaceId:direction:amount:)`.
     @discardableResult
     func makeFocusedSplitWider(amount: UInt16 = 48) -> Bool {

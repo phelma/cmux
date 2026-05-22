@@ -7829,7 +7829,7 @@ struct ContentView: View {
             if !tabManager.makeFocusedSplitWider() {
 #if DEBUG
                 if let workspace = tabManager.selectedWorkspace {
-                    cmuxDebugLog("palette.makeSplitWider result=noHorizontalSplitOrFailed workspaceId=\(workspace.id)")
+                    cmuxDebugLog("palette.makeSplitWider result=resizeFailed workspaceId=\(workspace.id)")
                 } else {
                     cmuxDebugLog("palette.makeSplitWider result=noWorkspace")
                 }
