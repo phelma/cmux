@@ -5,6 +5,7 @@ extension cmuxApp {
         splitCommandButton(title: String(localized: "command.makeSplitWider.title", defaultValue: "Make Pane Wider"), shortcut: menuShortcut(for: .makeSplitWider)) {
             let manager = activeTabManager
             if !manager.makeFocusedSplitWider() {
+                NSSound.beep()
 #if DEBUG
                 if let workspace = manager.selectedWorkspace {
                     cmuxDebugLog("menu.makeSplitWider result=noHorizontalSplitOrFailed workspaceId=\(workspace.id)")
