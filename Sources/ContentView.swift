@@ -7252,7 +7252,7 @@ struct ContentView: View {
         contributions.append(
             CommandPaletteCommandContribution(
                 commandId: "palette.makeSplitWider",
-                title: constant(String(localized: "command.makeSplitWider.title", defaultValue: "Make Pane Wider")),
+                title: constant(String(localized: "command.makeSplitWider.title", defaultValue: "Make Split Wider")),
                 subtitle: constant(String(localized: "command.makeSplitWider.subtitle", defaultValue: "Terminal Layout")),
                 keywords: ["terminal", "pane", "split", "wider", "resize", "expand"],
                 when: { context in
