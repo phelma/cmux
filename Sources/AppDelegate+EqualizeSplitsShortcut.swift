@@ -35,6 +35,9 @@ extension AppDelegate {
             return
         }
         let didResize = tabManager.makeFocusedSplitWider()
+        if !didResize {
+            NSSound.beep()
+        }
 #if DEBUG
         if !didResize {
             cmuxDebugLog("shortcut.action name=makeSplitWider result=noHorizontalSplitOrFailed workspaceId=\(workspace.id)")

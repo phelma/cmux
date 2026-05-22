@@ -7827,6 +7827,13 @@ struct ContentView: View {
         }
         registry.register(commandId: "palette.makeSplitWider") {
             if !tabManager.makeFocusedSplitWider() {
+#if DEBUG
+                if let workspace = tabManager.selectedWorkspace {
+                    cmuxDebugLog("palette.makeSplitWider result=noHorizontalSplitOrFailed workspaceId=\(workspace.id)")
+                } else {
+                    cmuxDebugLog("palette.makeSplitWider result=noWorkspace")
+                }
+#endif
                 NSSound.beep()
             }
         }
